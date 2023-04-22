@@ -8,6 +8,7 @@ describe('Utils test suite', () => {
             log("Setup")
             sut = new Stringutils();
         })
+        it.todo('should do something but not implemented yet')
         it('should return corrent upper case', () => {
             log("actual test")
             const actual = sut.toUpperCase("abc")
@@ -30,7 +31,7 @@ describe('Utils test suite', () => {
             }).toThrow('Invalid argument!')
 
         })
-        it.only('should thorw error invalid argument  - try catch block', (done) => {
+        it('should thorw error invalid argument  - try catch block', (done) => {
             try {
                 sut.toUpperCase('')
                 done()
