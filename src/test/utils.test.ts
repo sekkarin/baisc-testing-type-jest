@@ -1,11 +1,8 @@
 import { assert } from "console";
-import { toUpperCase } from "../utils";
+import { getStringInfo, toUpperCase } from "../utils";
 
 describe('Utils test suite',()=>{
-
-
-    test('should return uppercase',()=>{
-        // const result = toUpperCase("abc");
+    it('should return uppercase',()=>{
         // arrange เตรียมข้อมูล
         const sut = toUpperCase;
         const expected = "ABC";
@@ -15,5 +12,22 @@ describe('Utils test suite',()=>{
 
         // assert ผลที่คาดหวัง
         expect(actual).toBe(expected)
+    })
+    it('should return info for valid string',()=>{
+        const actual = getStringInfo('My-String');
+
+        expect(actual.lowerCase).toBe('my-string')
+        expect(actual.upperCase).toBe('MY-STRING')
+        expect(actual.extraInfo).toEqual({})
+        expect(actual.charaters.length).toBe(9)
+        expect(actual.charaters).toHaveLength(9)
+        expect(actual.charaters).toEqual(['M','y','-','S','t','r','i','n','g'])
+        expect(actual.charaters).toContain<string>('M') // เช็คข้อมูลใน array 
+        expect(actual.charaters).toEqual(expect.arrayContaining(['M','y','-','S','t','r','i','g','n']))
+
+        expect(actual.extraInfo).not.toBe(undefined)
+        expect(actual.extraInfo).not.toBeUndefined()
+        expect(actual.extraInfo).toBeDefined()
+        expect(actual.extraInfo).toBeTruthy()
     })
 })
