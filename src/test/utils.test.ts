@@ -1,4 +1,4 @@
-import {  log } from "console";
+import { log } from "console";
 import { Stringutils, getStringInfo, toUpperCase } from "../utils";
 
 describe('Utils test suite', () => {
@@ -8,15 +8,37 @@ describe('Utils test suite', () => {
             log("Setup")
             sut = new Stringutils();
         })
-        afterEach(()=>{
-            // clearing mocks
-            log("Teardown")
-        })
         it('should return corrent upper case', () => {
             log("actual test")
             const actual = sut.toUpperCase("abc")
             expect(actual).toBe("ABC")
 
+        })
+        it('should thorw error invalid argument  - function', () => {
+            log("actual test")
+            function expectError() {
+                const actual = sut.toUpperCase('')
+            }
+            // const actual = sut.toUpperCase("")
+            expect(expectError).toThrow()
+            expect(expectError).toThrow('Invalid argument!')
+
+        })
+        it('should thorw error invalid argument  - arrow function', () => {
+            expect(() => {
+                const actual = sut.toUpperCase('')
+            }).toThrow('Invalid argument!')
+
+        })
+        it.only('should thorw error invalid argument  - try catch block', (done) => {
+            try {
+                sut.toUpperCase('')
+                done()
+            } catch (error) {
+                expect(error).toBeInstanceOf(Error)
+                expect(error).toHaveProperty('message','Invalid argument!')
+                done()
+            }
         })
     })
 

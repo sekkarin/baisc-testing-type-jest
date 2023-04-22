@@ -5,6 +5,7 @@ export function toUpperCase(arg) {
 }
 export class Stringutils{
     public toUpperCase(arg:string){
+        // if(!arg) throw new Error("Invalid argument!")
         return toUpperCase(arg);
     }
 }
