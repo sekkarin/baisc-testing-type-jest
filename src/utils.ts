@@ -3,6 +3,11 @@
 export function toUpperCase(arg) {
     return arg.toUpperCase();
 }
+export class Stringutils{
+    public toUpperCase(arg:string){
+        return toUpperCase(arg);
+    }
+}
 export type stringInfo = {
     lowerCase:string;
     upperCase:string;

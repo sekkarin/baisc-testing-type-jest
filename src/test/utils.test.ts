@@ -1,7 +1,25 @@
-import { assert } from "console";
-import { getStringInfo, toUpperCase } from "../utils";
+import {  log } from "console";
+import { Stringutils, getStringInfo, toUpperCase } from "../utils";
 
 describe('Utils test suite', () => {
+    describe.only('Stringutils tests', () => {
+        let sut: Stringutils
+        beforeEach(() => {
+            log("Setup")
+            sut = new Stringutils();
+        })
+        afterEach(()=>{
+            // clearing mocks
+            log("Teardown")
+        })
+        it('should return corrent upper case', () => {
+            log("actual test")
+            const actual = sut.toUpperCase("abc")
+            expect(actual).toBe("ABC")
+
+        })
+    })
+
     it('should return uppercase', () => {
         // arrange เตรียมข้อมูล
         const sut = toUpperCase;
@@ -13,14 +31,14 @@ describe('Utils test suite', () => {
         // assert ผลที่คาดหวัง
         expect(actual).toBe(expected)
     })
-    describe.only('ToUpperCase Example', () => {
+    describe('ToUpperCase Example', () => {
         it.each([
-            {input:'abc',expected:'ABC'},
-            {input:'ken',expected:'KEN'},
-            {input:'hello',expected:'HELLO'},
-            {input:'hello-world',expected:'HELLO-WORLD'},
-            {input:'My-World',expected:'MY-WORLD'},
-        ])('$input to Upper case should be $expected',({input,expected})=>{
+            { input: 'abc', expected: 'ABC' },
+            { input: 'ken', expected: 'KEN' },
+            { input: 'hello', expected: 'HELLO' },
+            { input: 'hello-world', expected: 'HELLO-WORLD' },
+            { input: 'My-World', expected: 'MY-WORLD' },
+        ])('$input to Upper case should be $expected', ({ input, expected }) => {
             const actual = toUpperCase(input)
             expect(actual).toBe(expected)
         })
